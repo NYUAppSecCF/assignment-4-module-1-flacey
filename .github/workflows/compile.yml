@@ -1,0 +1,28 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ main ]
+
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+    - name: Set up JDK 17
+      uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      working-directory: ./GiftCardSite
+    - name: Build with Gradle
+      run: ./gradlew build
+      working-directory: ./GiftCardSite
