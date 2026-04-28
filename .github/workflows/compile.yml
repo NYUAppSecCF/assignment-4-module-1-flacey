@@ -20,7 +20,7 @@ jobs:
       uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-      working-directory: ./GiftCardSite
+      working-directory: GiftcardSite
     - name: Build with Gradle
       run: ./gradlew build
-      working-directory: ./GiftCardSite
+      working-directory: GiftcardSite
